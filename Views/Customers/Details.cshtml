@@ -6,7 +6,6 @@
 }
 
 <h2>@Model.Name</h2>
-<a href="@Url.Action("Edit", "Customers", new { id = Model.MembershipTypeId })" class="btn btn-primary">Edit</a>
 <ul>
     <li>@Model.MembershipType.Name</li>
     @if (Model.Birthdate.HasValue)
@@ -15,3 +14,4 @@
     }
 </ul>
 
+<button class="btn btn-primary" onclick="window.location.href='@Url.Action("Edit", "Customers", new { id = Model.Id })'">Edit</button>
