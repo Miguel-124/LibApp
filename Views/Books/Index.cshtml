@@ -11,7 +11,7 @@
     <a class="btn btn-primary" asp-action="New">New Book</a>
 </p>
 
-<table class="table table-bordered table-hover">
+<table id="books" class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>Book</th>
@@ -23,7 +23,7 @@
         @foreach (var book in Model)
         {
             <tr>
-                <td><a asp-action="Edit" asp-route-id="@book.Id">@Html.DisplayFor(modelItem => book.Title)</a></td>
+                <td><a asp-action="Details" asp-route-id="@book.Id">@Html.DisplayFor(modelItem => book.Title)</a></td>
                 <td>@book.Genre.Name</td>
                 <td><a asp-action="Details" asp-route-id="@book.Id">Details</a></td>
             </tr>
