@@ -89,6 +89,11 @@ namespace LibApp.Controllers
         [HttpPost]
         public IActionResult Save(Book book)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("BookForm", new BookFormViewModel { Book = book, Genres = _context.Genre.ToList() });
+            }
+
             if (book.Id == 0)
             {
                 book.DateAdded = DateTime.Now;

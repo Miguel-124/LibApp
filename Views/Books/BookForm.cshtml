@@ -1,4 +1,7 @@
-﻿@model LibApp.ViewModels.BookFormViewModel
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model LibApp.ViewModels.BookFormViewModel
 
 @{
     ViewBag.Title = Model.Title;
@@ -8,6 +11,7 @@
 
 @using (Html.BeginForm("Save", "Books"))
 {
+    @Html.AntiForgeryToken()
     <div class="form-group">
         @Html.LabelFor(m => m.Book.Id)
         @Html.TextBoxFor(m => m.Book.Id, new { @class = "form-control" })
