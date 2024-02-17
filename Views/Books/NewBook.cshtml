@@ -6,18 +6,22 @@
 }
 
 <h2>New Book</h2>
-@using (Html.BeginForm("Create", "Book"))
+@using (Html.BeginForm("Create", "Book", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     <div class="form-group">
         @Html.HiddenFor(m => m.Book.Id)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Book.Title)
         @Html.TextBoxFor(m => m.Book.Title, new {@class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Book.Title)
+        @Html.ValidationMessageFor(m => m.Book.Author)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Book.Author)
         @Html.TextBoxFor(m => m.Book.Author, new {@class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Book.GenreId)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Book.Genre)
@@ -26,6 +30,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Book.NumberInStock)
         @Html.TextBoxFor(m => m.Book.NumberInStock, new {@class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Book.NumberInStock)
     </div>
     <button type="submit" class="btn-primary">Save</button>
 }
