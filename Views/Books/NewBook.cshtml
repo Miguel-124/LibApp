@@ -1,0 +1,31 @@
+﻿@model LibApp.ViewModels.NewBookViewModel
+
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Book</h2>
+@using (Html.BeginForm("Create", "Book"))
+{
+    <div class="form-group">
+        @Html.HiddenFor(m => m.Book.Id)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.Title)
+        @Html.TextBoxFor(m => m.Book.Title, new {@class = "form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.Author)
+        @Html.TextBoxFor(m => m.Book.Author, new {@class = "form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.Genre)
+        @Html.TextBoxFor(m => m.Book.Genre, new {@class = "form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.NumberInStock)
+        @Html.TextBoxFor(m => m.Book.NumberInStock, new {@class = "form-control"})
+    </div>
+    <button type="submit" class="btn-primary">Save</button>
+}
