@@ -89,7 +89,35 @@ namespace LibApp.Controllers.API
 
             return Ok(customerInDb);
         }
+        // GET /api/customers/Details/{id}
+        [HttpGet("Details/{id}")]
+        public IActionResult Details(int id)
+        {
+            var customer = _context.Customers
+                .Include(c => c.MembershipType)
+                .SingleOrDefault(c => c.Id == id);
 
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(customer);
+        }
+
+        // GET /api/customers/Edit/{id}
+        [HttpGet("Edit/{id}")]
+        public IActionResult Edit(int id)
+        {
+            var customer = _context.Customers.Find(id);
+
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(customer);
+        }
 
         private ApplicationDbContext _context;
         private IMapper _mapper;
